@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios'
+import axios from 'axios'
 
 const apiServise = axios.create({
   baseURL: 'https://googlemeetapi.herokuapp.com/api',

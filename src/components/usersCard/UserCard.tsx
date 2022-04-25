@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import { AxiosResponse } from 'axios'
 
-import { Typography, useTheme, CardMedia } from '@mui/material'
+import { Typography, CardMedia } from '@mui/material'
 
 import MicOffOutlinedIcon from '@mui/icons-material/MicOffOutlined'
 import GraphicEqRoundedIcon from '@mui/icons-material/GraphicEqRounded'
 
 import { CardBody, IconContainer } from './cardComponents'
-import { getRandomCat } from '../../servises/Api'
+import { getRandomCat } from '../../servises/api'
 
 interface IUserCardProps {
   user: IUser
@@ -22,7 +22,6 @@ export const UserCard: React.FC<IUserCardProps> = ({
   talking,
 }) => {
   const [cat, setCat] = useState<string>('')
-  const theme = useTheme()
 
   async function handleClick() {
     try {

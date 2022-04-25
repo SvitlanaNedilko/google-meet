@@ -11,7 +11,7 @@ import { AxiosResponse } from 'axios'
 
 import { CardList } from './components/cardList/CardList'
 import { BottomActions } from './components/bottomActions/BottomActions'
-import { getUsers } from './servises/Api'
+import { getUsers } from './servises/api'
 
 import theme from './theme/theme'
 
