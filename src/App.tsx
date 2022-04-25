@@ -1,11 +1,10 @@
 import './App.css'
 import { useState, useEffect, useCallback } from 'react'
 import { toast } from 'react-toastify'
-
 import { UserCard } from './components/usersCard/UserCard'
+import { Menu } from './components/menu/Menu'
 
 import Grid from '@mui/material/Grid'
-
 import Stack from '@mui/material/Stack'
 import DeleteIcon from '@mui/icons-material/Delete'
 import MicIcon from '@mui/icons-material/Mic'
@@ -76,6 +75,8 @@ const theme = createTheme({
 function App() {
   const [spacing, setSpacing] = useState(2)
   const [users, setUsers] = useState<IUser[]>([])
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
 
   const getAllUsers = useCallback(() => {
     getUsers()
@@ -90,6 +91,14 @@ function App() {
   useEffect(() => {
     getAllUsers()
   }, [getAllUsers])
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -157,7 +166,12 @@ function App() {
               <Button variant="contained" size="medium" color="primary">
                 <PresentToAllOutlinedIcon />
               </Button>
-              <Button variant="contained" size="medium" color="primary">
+              <Button
+                onClick={handleClick}
+                variant="contained"
+                size="medium"
+                color="primary"
+              >
                 <MoreVertOutlinedIcon />
               </Button>
               <Button
@@ -168,6 +182,7 @@ function App() {
               >
                 <CallEndIcon />
               </Button>
+              <Menu anchorEl={anchorEl} open={open} onClose={handleClose} />
             </Stack>
           </Grid>
 
