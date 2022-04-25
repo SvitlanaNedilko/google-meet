@@ -1,16 +1,12 @@
 import React, { useState } from 'react'
 import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia'
-import { Box, Button, Typography, useTheme } from '@mui/material'
+import { Box, Typography, useTheme } from '@mui/material'
 import MicOffOutlinedIcon from '@mui/icons-material/MicOffOutlined'
 import GraphicEqRoundedIcon from '@mui/icons-material/GraphicEqRounded'
 import { getRandomCat } from '../../servises/Api'
 import { toast } from 'react-toastify'
 import { AxiosResponse } from 'axios'
-import {
-  NoEncryptionGmailerrorredRounded,
-  NoEncryptionGmailerrorredTwoTone,
-} from '@mui/icons-material'
 
 interface IUserCardProps {
   user: IUser
