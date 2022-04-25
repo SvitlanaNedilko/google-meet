@@ -27,14 +27,14 @@ const AppContainer = styled(Box)`
 function App() {
   const [users, setUsers] = useState<IUser[]>([])
 
-  const getAllUsers = useCallback(() => {
-    getUsers()
-      .then((response: AxiosResponse<{ data: { users: IUser[] } }>) => {
-        setUsers(response.data.data.users)
-      })
-      .catch(() => {
-        toast.error('Something went wrong, refresh the page or try again later')
-      })
+  const getAllUsers = useCallback(async () => {
+    try {
+      const response: AxiosResponse<{ data: { users: IUser[] } }> =
+        await getUsers()
+      setUsers(response.data.data.users)
+    } catch (error) {
+      toast.error('Something went wrong, refresh the page or try again later')
+    }
   }, [])
 
   useEffect(() => {

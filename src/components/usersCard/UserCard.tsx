@@ -24,14 +24,13 @@ export const UserCard: React.FC<IUserCardProps> = ({
   const [cat, setCat] = useState<string>('')
   const theme = useTheme()
 
-  const handleClick = () => {
-    getRandomCat()
-      .then((response: AxiosResponse<{ data: ICat }>) => {
-        setCat(response.data.data.photo)
-      })
-      .catch(() => {
-        toast.error('Something went wrong, refresh the page or try again later')
-      })
+  async function handleClick() {
+    try {
+      const response: AxiosResponse<{ data: ICat }> = await getRandomCat()
+      setCat(response.data.data.photo)
+    } catch (error) {
+      toast.error('Something went wrong, refresh the page or try again later')
+    }
   }
 
   return (
