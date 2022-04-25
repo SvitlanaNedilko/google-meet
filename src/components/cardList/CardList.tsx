@@ -1,4 +1,4 @@
-import Stack from '@mui/material/Stack'
+import { Stack, CircularProgress } from '@mui/material'
 
 import { UserCard } from '../usersCard/UserCard'
 
@@ -16,7 +16,7 @@ export const CardList: React.FC<ICardList> = ({ users }) => {
       flexWrap="wrap"
       minHeight="calc(100% - 56px)"
     >
-      {/* {users?.length > 0 &&
+      {users?.length > 0 ? (
         users.map((user, index) => (
           <UserCard
             key={user.id}
@@ -24,7 +24,10 @@ export const CardList: React.FC<ICardList> = ({ users }) => {
             muted={index === 5}
             talking={index === 3}
           />
-        ))} */}
+        ))
+      ) : (
+        <CircularProgress color="info" sx={{ margin: 'auto' }} />
+      )}
     </Stack>
   )
 }
