@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { Menu } from '../menu/Menu'
-
 import { Badge, Button, Grid, Stack, Typography } from '@mui/material'
+
 import MicIcon from '@mui/icons-material/Mic'
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined'
 import PanToolOutlinedIcon from '@mui/icons-material/PanToolOutlined'
@@ -13,6 +12,8 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined'
 import DeviceHubOutlinedIcon from '@mui/icons-material/DeviceHubOutlined'
+
+import { Menu } from '../menu/Menu'
 
 interface IBottomActions {
   summ: number
@@ -31,53 +32,39 @@ export const BottomActions: React.FC<IBottomActions> = ({ summ }) => {
   }
   return (
     <Grid
-      sx={{
-        flexGrow: 1,
-      }}
       container
       mt={2}
+      flex={1}
       justifyContent="space-between"
       alignItems="center"
     >
       <Grid item>
-        <Typography
-          sx={{
-            color: 'lightgrey',
-          }}
-        >
-          Team meeting
-        </Typography>
+        <Typography color="primary.contrastText">Team meeting</Typography>
       </Grid>
 
       <Grid item justifyContent="center" columnGap="12px">
         <Stack direction="row" gap={1.5}>
-          <Button variant="contained" size="medium" color="primary">
+          <Button variant="contained">
             <MicIcon />
           </Button>
 
-          <Button variant="contained" size="medium" color="primary">
+          <Button variant="contained">
             <VideocamOutlinedIcon />
           </Button>
-          <Button variant="contained" size="medium" color="primary">
+          <Button variant="contained">
             <RemoveFromQueueIcon />
           </Button>
-          <Button variant="contained" size="medium" color="primary">
+          <Button variant="contained">
             <PanToolOutlinedIcon />
           </Button>
-          <Button variant="contained" size="medium" color="primary">
+          <Button variant="contained">
             <PresentToAllOutlinedIcon />
           </Button>
-          <Button
-            onClick={handleClick}
-            variant="contained"
-            size="medium"
-            color="primary"
-          >
+          <Button onClick={handleClick} variant="contained">
             <MoreVertOutlinedIcon />
           </Button>
           <Button
             variant="contained"
-            size="medium"
             color="error"
             sx={{ paddingX: 3, borderRadius: 100 }}
           >
@@ -88,19 +75,19 @@ export const BottomActions: React.FC<IBottomActions> = ({ summ }) => {
       </Grid>
 
       <Grid item justifyContent="center">
-        <Button size="medium" color="primary">
-          <InfoOutlinedIcon fontSize="medium" />
+        <Button>
+          <InfoOutlinedIcon />
         </Button>
-        <Button size="medium" color="primary">
+        <Button>
           <Badge badgeContent={summ} color="primary">
-            <GroupOutlinedIcon fontSize="medium" />
+            <GroupOutlinedIcon />
           </Badge>
         </Button>
-        <Button size="medium" color="primary">
-          <ChatOutlinedIcon fontSize="medium" />
+        <Button>
+          <ChatOutlinedIcon />
         </Button>
-        <Button size="medium" color="primary">
-          <DeviceHubOutlinedIcon fontSize="medium" />
+        <Button>
+          <DeviceHubOutlinedIcon />
         </Button>
       </Grid>
     </Grid>

@@ -1,55 +1,28 @@
 import { useState, useEffect, useCallback } from 'react'
+import {
+  Box,
+  createTheme,
+  CssBaseline,
+  styled,
+  ThemeProvider,
+} from '@mui/material'
+import { toast } from 'react-toastify'
+import { AxiosResponse } from 'axios'
+
 import { CardList } from './components/cardList/CardList'
 import { BottomActions } from './components/bottomActions/BottomActions'
 import { getUsers } from './servises/Api'
 
-import { toast } from 'react-toastify'
-import { AxiosResponse } from 'axios'
-import { Box, createTheme, CssBaseline, ThemeProvider } from '@mui/material'
+import theme from './theme/theme'
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#3c4043',
-      contrastText: '#fff;',
-    },
-    secondary: {
-      main: '#212121',
-    },
-    info: {
-      main: '#42a5f5',
-    },
-  },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: 20,
-        },
-        sizeMedium: {
-          minWidth: '40px',
-          minHeight: '40px',
-          padding: 0,
-        },
-        sizeSmall: {
-          minWidth: '20px',
-          padding: 0,
-        },
-        textSizeMedium: {
-          color: '#fff;',
-        },
-      },
-    },
-    MuiBadge: {
-      styleOverrides: {
-        badge: {
-          top: -4,
-          right: -4,
-        },
-      },
-    },
-  },
-})
+const appTheme = createTheme(theme)
+
+const AppContainer = styled(Box)`
+  background-color: ${({ theme }) => theme.palette.secondary.main};
+  min-height: 100vh;
+  height: 100vh;
+  padding: ${({ theme }) => theme.spacing(2)};
+`
 
 function App() {
   const [users, setUsers] = useState<IUser[]>([])
@@ -69,19 +42,12 @@ function App() {
   }, [getAllUsers])
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={appTheme}>
       <CssBaseline />
-      <Box
-        sx={{
-          backgroundColor: '#202124',
-          minHeight: '100vh',
-          maxHeight: '100vh',
-          padding: 2,
-        }}
-      >
+      <AppContainer>
         <CardList users={users} />
         <BottomActions summ={users.length} />
-      </Box>
+      </AppContainer>
     </ThemeProvider>
   )
 }
