@@ -66,11 +66,11 @@ export const Menu: React.FC<IMenuProps> = ({ anchorEl, open, onClose }) => {
               secondary="Відкрити файл jam"
             />
           </MenuItem>
-          <MenuItem onClick={() => onClick('Зіписувати зустріч')}>
+          <MenuItem onClick={() => onClick('Записувати зустріч')}>
             <ListItemIcon>
               <RadioButtonCheckedOutlinedIcon fontSize="small" />
             </ListItemIcon>
-            <ListItemText>Зіписувати зустріч</ListItemText>
+            <ListItemText>Записувати зустріч</ListItemText>
           </MenuItem>
           <Divider />
 
